@@ -11,6 +11,7 @@ var thunder, thunder1,thunder2,thunder3,thunder4;
 var umbrellaObj;
 var backImg;
 var thunderFrame;
+var boy,boyimg;
 
 function preload(){
     thunder1 = loadImage("images/thunderbolt/1.png");
@@ -18,13 +19,18 @@ function preload(){
     thunder3 = loadImage("images/thunderbolt/3.png");
     thunder4 = loadImage("images/thunderbolt/4.png");
     backImg=loadImage("images/2782569.jpg");
+    boyimg=loadAnimation("images/Walking Frame/walking_1.png","images/Walking Frame/walking_2.png","images/Walking Frame/walking_3.png","images/Walking Frame/walking_4.png",
+    "images/Walking Frame/walking_5.png","images/Walking Frame/walking_6.png","images/Walking Frame/walking_7.png","images/Walking Frame/walking_8.png");
 }
 
 function setup(){
-    createCanvas(500, 470);
+    createCanvas(700, 670);
 	engine = Engine.create();
 	world = engine.world;
     Engine.run(engine);
+    boy=createSprite(350,410,10,10);
+    boy.addAnimation("boy_walk",boyimg);
+    boy.scale=0.6;
 
     umbrellaObj=new Umbrella(width/2,270);
 
@@ -32,6 +38,7 @@ function setup(){
     for(var i=0;i<maxDrops;i++){
         drops.push(new Drop(random(0,500),random(0,450)));
     }
+    drawSprites();
 }
 
 
